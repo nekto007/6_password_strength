@@ -1,7 +1,11 @@
 # Password Strength Calculator
+'''#!bash
+Скрипт для проверки сложности Вашего пароля.
+Для запуска скрипта требуется выполнить команду:
 
-[TODO. There will be project description]
+$ python3 password_lenght.py
 
 # Project Goals
+
 
 The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
