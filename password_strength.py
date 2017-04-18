@@ -13,13 +13,18 @@ def get_password_strength(password):
         check += 2
     if len(password) >= 8:
         check += 1
+    check += check_password_blacklist(password)
+    print('Сложность вашего пароля: ', check)
+
+
+def check_password_blacklist(password):
     with open('blacklist.txt', 'r') as blacklist:
-        check += 2
+        check = 2
         for i in blacklist:
             if password in i:
-                check = 1
+                check = -2
                 break
-    print('Сложность вашего пароля: ', check)
+    return check
 
 
 if __name__ == '__main__':
