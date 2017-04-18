@@ -1,10 +1,10 @@
 # Password Strength Calculator
-'''#!bash
+```
 Скрипт для проверки сложности Вашего пароля.
 Для запуска скрипта требуется выполнить команду:
 
 $ python3 password_lenght.py
-
+```
 # Project Goals
 
 
