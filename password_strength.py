@@ -17,10 +17,10 @@ def get_password_strength(password):
         print(2)
     if len(password) >= 8:
         check += 1
-    check = check_password_blacklist(password, check)
+    check = is_password_in_blacklist(password, check)
 
 
-def check_password_blacklist(password, check):
+def is_password_in_blacklist(password, check):
     file = open('blacklist.txt', 'r').read().split()
     if str(password) in file:
         check = 1
