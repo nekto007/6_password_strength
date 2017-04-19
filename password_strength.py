@@ -21,8 +21,8 @@ def get_password_strength(password):
 
 
 def is_password_in_blacklist(password, check):
-    file = open('blacklist.txt', 'r').read().split()
-    if str(password) in file:
+    blacklist = open('blacklist.txt', 'r').read().split()
+    if str(password) in blacklist:
         check = 1
     else:
         check += 2
