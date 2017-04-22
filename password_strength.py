@@ -22,7 +22,8 @@ def get_password_strength(password, point):
 
 
 def is_password_in_blacklist(password, point):
-    blacklist = open('blacklist.txt', 'r').read().split()
+    with open('blacklist.txt', 'r') as blacklist:
+        blacklist = blacklist.read().split()
     if str(password) in blacklist:
         point = 1
     else:
