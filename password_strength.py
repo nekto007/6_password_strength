@@ -1,36 +1,37 @@
 import re
 import os, sys
-check = 1
+point = 1
+
+def clear_console():
+    os.system('cls' if os.name=='nt' else 'clear')
 
 
-def get_password_strength(password):
-    global check
+def get_password_strength(password, point):
     if re.search('.\d', password):
-        check += 1
-        print('1')
+        point += 1
     if re.search('[a-z]', password):
-        check += 1
+        point += 1
     if re.search('[A-Z]', password):
-        check += 2
+        point += 2
     if re.search('.\W', password):
-        check += 2
-        print(2)
+        point += 2
     if len(password) >= 8:
-        check += 1
-    check = is_password_in_blacklist(password, check)
+        point += 1
+    result = is_password_in_blacklist(password, point)
+    return result
 
 
-def is_password_in_blacklist(password, check):
+def is_password_in_blacklist(password, point):
     blacklist = open('blacklist.txt', 'r').read().split()
     if str(password) in blacklist:
-        check = 1
+        point = 1
     else:
-        check += 2
-    return check
+        point += 2
+    return point
 
 
 if __name__ == '__main__':
     password = input('Введите Ваш пароль: ')
-    os.system('clear')
-    get_password_strength(password)
-    print('Сложность Вашего пароля: %s/10' % (check))
+    clear_console()
+    result = get_password_strength(password, point)
+    print('Сложность Вашего пароля: %s/10' % (result))
