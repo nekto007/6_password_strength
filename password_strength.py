@@ -1,12 +1,10 @@
 import re
-import os, sys
-point = 1
-
-def clear_console():
-    os.system('cls' if os.name=='nt' else 'clear')
+import os
+import getpass
 
 
-def get_password_strength(password, point):
+def get_password_strength(password):
+    point = 1
     if re.search('.\d', password):
         point += 1
     if re.search('[a-z]', password):
@@ -32,7 +30,6 @@ def is_password_in_blacklist(password, point):
 
 
 if __name__ == '__main__':
-    password = input('Введите Ваш пароль: ')
-    clear_console()
-    result = get_password_strength(password, point)
+    password = getpass.getpass(prompt='Введите Ваш пароль: ')
+    result = get_password_strength(password)
     print('Сложность Вашего пароля: %s/10' % (result))
